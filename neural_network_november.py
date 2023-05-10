@@ -124,13 +124,13 @@ state = [
 
 t = [state]
 
-# Step 2: Train the neural network on a Swastika 5x5 pixels image
+# Step 2: Train the neural network on a Rice Field Kanji 5x5 pixels image
 img = [
-    [-1, 1, 1, -1, -1],
-    [-1, -1, 1, -1, 1],
     [1, 1, 1, 1, 1],
-    [1, -1, 1, -1, -1],
-    [-1, -1, 1, 1, -1],
+    [1, -1, 1, -1, 1],
+    [1, 1, 1, 1, 1],
+    [1, -1, 1, -1, 1],
+    [1, 1, 1, 1, 1],
 ]
 
 weights = train(img)
