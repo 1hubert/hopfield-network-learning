@@ -34,7 +34,7 @@ TODO:
 
 
 from copy import deepcopy
-from random import randrange
+from random import randrange, choice
 
 def index_to_row_col(index, num_cols):
     row = index // num_cols  # Divide by number of columns
@@ -114,14 +114,9 @@ def train(img: list[list]) -> list[list]:
     return WeightMatrix
 
 # -------------
-# Step 1: Define state and timeline
-state = [
-    [1, 1, 1, 1, 1],
-    [1, 1, 1, 1, 1],
-    [1, 1, 1, 1, 1],
-    [1, 1, 1, 1, 1],
-    [1, 1, 1, 1, 1],
-]
+# Step 1: Define dimensions, state and timeline
+n = 5
+state = [[choice([-1, 1]) for _ in range(5)] for _ in range(5)]
 
 t = [state]
 
