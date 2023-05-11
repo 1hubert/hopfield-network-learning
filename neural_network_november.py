@@ -125,8 +125,8 @@ state = [
 
 t = [state]
 
-# Step 2: Train the neural network on a Rice Field Kanji 5x5 pixels image
-img = [
+# Step 2: Train the neural network on a set of images
+rice_field_img = [
     [1, 1, 1, 1, 1],
     [1, -1, 1, -1, 1],
     [1, 1, 1, 1, 1],
@@ -134,7 +134,35 @@ img = [
     [1, 1, 1, 1, 1],
 ]
 
-weights = train(img)
+x_img = [
+    [1, -1, -1, -1, 1],
+    [-1, 1, -1, 1, -1],
+    [-1, -1, 1, -1, -1],
+    [-1, 1, -1, 1, -1],
+    [1, -1, -1, -1, 1],
+]
+
+o_img = [
+    [1, 1, 1, 1, 1],
+    [1, -1, -1, -1, 1],
+    [1, -1, -1, -1, 1],
+    [1, -1, -1, -1, 1],
+    [1, 1, 1, 1, 1],
+]
+
+weights_rice_field = train(rice_field_img)
+weights_x = train(x_img)
+weights_o = train(o_img)
+
+weights = []
+weights_row_count = 25
+for w1, w2, w3 in zip(weights_rice_field, weights_x, weights_o):
+    row = []
+    for i in range(weights_row_count):
+        avg = (w1[i] + w2[i] + w3[i]) / 3
+        row.append(avg)
+
+    weights.append(row)
 
 # Step 3: Pass time x times
 x = 1000
