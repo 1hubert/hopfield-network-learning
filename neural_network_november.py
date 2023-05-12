@@ -9,33 +9,9 @@ TODO:
 - Experiment with micro-sized neural networks starting with 2 neurons to see how the weights influence states
 - Add a function to create a unique timeline (where no two neighboring states are the same)
 """
-
-# There will be nodes
-# Connections between nodes will be weights
-# I think representing nodes as matrix (like we did at school) is the simplest approach
-# the matrix will be just a python list of python lists
-# As for the values assigned to every connection between nodes... Hmmmmmmmm
-# Czy na node'ach są jakiekolwiek etykiety? Hmmmmmm
-# Connections have weights and neurons have activity
-# Activity - function of time, like v3(t)
-# We assume that a neuron can only have two states: inactive (let's say, -1), and active (1)
-# If our neural network had 16 nodes, that means we always have 16 ones or minus ones
-# We call it the state of the network
-# So the matrix I was talking about will be asigned to a var called "state" and won't have any extra info outside of -1's and 1's
-# The second importance-wise variable will be called "weights" and it will be a matrix of size 16 (one row for all weights of one row)
-
-# state = [
-#     [1, -1, 1, 1],
-#     [1, -1, 1, 1],
-#     [1, -1, 1, 1],
-#     [1, -1, 1, 1]
-# ]
-
-
-
-
 from copy import deepcopy
 from random import randrange, choice
+
 
 def index_to_row_col(index, num_cols):
     row = index // num_cols  # Divide by number of columns
@@ -57,6 +33,7 @@ def print_state(state):
         else:
             print()
 
+
 def print_timeline(t):
     for i, state in enumerate(t):
         print(f't = {i}')
@@ -73,7 +50,6 @@ def time_step(t, weights):
     x_rand = randrange(x_len)
     y_rand = randrange(y_len)
     weights_index = row_col_to_index(x_rand, y_rand, y_len)
-    # print(f'state[{x_rand}][{y_rand}] -> weights[{weights_index}]')
 
     result = 0
     for i, weight in enumerate(weights[weights_index]):
@@ -114,7 +90,7 @@ def train(img: list[list]) -> list[list]:
 
     return WeightMatrix
 
-# -------------
+
 # Step 1: Define dimensions, state and timeline
 n = 5
 state = [[choice([-1, 1]) for _ in range(n)] for _ in range(n)]
