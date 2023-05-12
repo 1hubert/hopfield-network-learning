@@ -7,6 +7,7 @@ which was introduced to me there: https://youtu.be/piF6D6CQxUw
 TODO:
 - If last 10/100/1000 iterations were the same, check if one of expected stable states was achieved and quit
 - Experiment with micro-sized neural networks starting with 2 neurons to see how the weights influence states
+- Add a function to create a unique timeline (where no two neighboring states are the same)
 """
 
 # There will be nodes
