@@ -117,7 +117,7 @@ def train(img: list[list]) -> list[list]:
 # -------------
 # Step 1: Define dimensions, state and timeline
 n = 5
-state = [[choice([-1, 1]) for _ in range(5)] for _ in range(5)]
+state = [[choice([-1, 1]) for _ in range(n)] for _ in range(n)]
 
 t = [state]
 
@@ -151,10 +151,9 @@ weights_x = train(x_img)
 weights_o = train(o_img)
 
 weights = []
-weights_row_count = 25
 for w1, w2, w3 in zip(weights_rice_field, weights_x, weights_o):
     row = []
-    for i in range(weights_row_count):
+    for i in range(n * n):
         avg = (w1[i] + w2[i] + w3[i]) / 3
         row.append(avg)
 
