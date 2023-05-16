@@ -4,11 +4,19 @@ My first neural network.
 An implementation of the Hopfield network,
 which was introduced to me there: https://youtu.be/piF6D6CQxUw
 
+Interesting comment from the video about "eyes":
+Guest6265+:
+That's really neat. I wonder what happens if you add "eyes" to the network, i.e. some subset of neurons whose activation is driven by an external signal instead of the update function.
+
+Layerwise Lectures:
+Good point. The original paper actually mentions an input current to the neurons. This would then be combined with the summed input of all other neurons, so it would modify the update function rather than replacing it. I left  this out for simplicity. However, it's actually an important detail once you start thinking about it. It sort of biases the network to a certain state and would explain where the starting state of the network comes from, if it's not random. The story would then go like this: the "eyes" of the network (love the metaphor btw) would cue the network with a partial state and the network would then autocomplete to its memory state. Kinda-sort-of-almost-like seeing a visual cue of some sort and then being reminded of a scene from your past - if we're being a little bit fanciful. Thanks for the comment.
+
 TODO:
 - If last 10/100/1000 iterations were the same, check if one of expected stable states was achieved and quit
 - Experiment with micro-sized neural networks starting with 2 neurons to see how the weights influence states
 - Add a function to create a unique timeline (where no two neighboring states are the same)
 - refactor so that the state is a vector, not a matrix
+- add "eyes" to the network
 """
 from copy import deepcopy
 from random import randrange, choice
